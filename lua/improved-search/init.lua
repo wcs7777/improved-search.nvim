@@ -3,6 +3,11 @@
 local jump = require("improved-search.jump")
 local current_word = require("improved-search.current-word")
 local search = require("improved-search.search")
+local config = require("improved-search.config")
+
+local function setup(settings)
+ config.update(settings)
+end
 
 return {
   stable_next = jump.next,
@@ -18,4 +23,6 @@ return {
   in_place_strict = search.search_in_place_strict,
   forward_strict = search.search_forward_strict,
   backward_strict = search.search_backward_strict,
+
+  setup = setup,
 }

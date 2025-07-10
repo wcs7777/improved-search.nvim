@@ -3,6 +3,8 @@
 --# selene: allow(unscoped_variables)
 --# selene: allow(unused_variable)
 
+local settings = require('improved-search.config').settings
+
 ---Provides the position of the given mark.
 ---@param mark string a vim's mark name.
 ---@return number line
@@ -101,7 +103,7 @@ function Improved_search_operator(motion_type)
 
   -- Set the selected text as a search text
   vim.fn.setreg("/", pattern_to_search)
-  vim.opt.hlsearch = true
+  vim.opt.hlsearch = settings().hlsearch
 
   if Improved_search_operator_behaviour.do_after then
     Improved_search_operator_behaviour.do_after()

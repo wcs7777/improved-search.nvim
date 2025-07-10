@@ -2,6 +2,8 @@
 -- without moving. they work like "*" or "#", but won't move the cursor to
 -- any directon.
 
+local settings = require('improved-search.config').settings
+
 local M = {}
 
 ---Search a word that is under the cursor (like "*" or "#", but without moving).
@@ -19,7 +21,7 @@ local function search_current(strict)
 
   -- Set highlight
   vim.fn.setreg("/", search_pattern)
-  vim.opt.hlsearch = true
+  vim.opt.hlsearch = settings().hlsearch
 
   -- Set cursor to the first character of the current_word
   -- (for next search conviniece).
